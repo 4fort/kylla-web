@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kylla<3</title>
+    <style>
+      :root {
+        --color_primary: #88ab8e;
+        --color_secondary: #afc8ad;
+        --color_tertiary: #eee7da;
+        --color_quaternary: #f2f1eb;
+      }
+
+      * {
+        transition: all 0.2s;
+      }
+      body,
+      html {
+        background-color: var(--color_quaternary);
+      }
+      .buttons {
+        position: relative;
+        display: flex;
+      }
+      button {
+        /* position: absolute; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Wanna go on a date with me baby?</h1>
+    <p class="counter"></p>
+    <div class="buttons">
+      <button class="btn yes">Yes</button>
+      <button class="btn no">No</button>
+    </div>
+  </body>
+  <script>
+    let hoverCounter = 0;
+    let clickCounter = 0;
+
+    const title = document.querySelector(".title");
+    const counter = document.querySelector(".counter");
+    const yesButton = document.querySelector(".yes");
+    const noButton = document.querySelector(".no");
+
+    let x;
+    let y;
+
+    noButton.addEventListener("mouseover", () => {
+      hoverCounter++;
+      // counter.innerHTML = hoverCounter;
+
+      if (hoverCounter == 5) {
+        title.innerHTML = "Are you sure you want to do that?";
+      } else if (hoverCounter == 10) {
+        title.innerHTML = "Think again Kylla!";
+      } else if (hoverCounter == 15) {
+        title.innerHTML = "No, don't do that!";
+      } else if (hoverCounter == 20) {
+        title.innerHTML = "Please don't!";
+      } else if (hoverCounter == 25) {
+        title.innerHTML = "This is your last chance :(((";
+      } else if (hoverCounter >= 30) {
+        if (hoverCounter == 30) {
+          title.innerHTML = "fine...";
+        }
+
+        noButton.addEventListener("click", () => {
+          title.innerHTML = "Really, baby?";
+          clickCounter++;
+          if (clickCounter == 1) {
+            title.innerHTML = "I'm sure you are.";
+          } else if (clickCounter == 2) {
+            yesButton.style.height = "100px";
+            yesButton.style.width = "100px";
+            noButton.style.height = "5px";
+            noButton.style.width = "5px";
+          }
+        });
+      }
+
+      if (hoverCounter <= 30) {
+        moveButton();
+      }
+    });
+
+    const moveButton = () => {
+      const w = window.innerWidth - 90;
+      const h = window.innerHeight - 90;
+
+      x = Math.random() * (w - noButton.offsetWidth);
+      y = Math.random() * (h - noButton.offsetHeight);
+      // noButton.style.left = x + "px";
+      // noButton.style.top = y + "px";
+      noButton.style.transform = `translate(${x}px, ${y}px)`;
+    };
+  </script>
+</html>
+
+<!-- 
+  TODO: 
+
+  * MO GAMAY MO DAKO ANG BUTTONS
+
+ -->
