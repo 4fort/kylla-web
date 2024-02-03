@@ -1,0 +1,152 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;900&family=Single+Day&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+  --color-white: #fefefe;
+  --color-black: #000000;
+  /* --color_primary: #f2bed1;
+  --color_secondary: #fdcedf;
+  --color_tertiary: #f8e8ee;
+  --color_quaternary: #f9f5f6; */
+  /* --color_primary: #88ab8e;
+  --color_secondary: #afc8ad;
+  --color_tertiary: #eee7da;
+  --color_quaternary: #f2f1eb; */
+}
+
+* {
+  transition: all 0.2s;
+  margin: 0;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif;
+}
+body,
+html {
+  height: 95vh;
+  width: 100vw;
+  /* background-color: var(--color_primary); */
+  background-color: var(--color-white);
+  /* scroll-snap-type: y proximity; */
+}
+
+main {
+  height: 100%;
+
+  .wrapper {
+    height: inherit;
+    width: inherit;
+    /* display: flex; */
+    overflow-x: scroll;
+  }
+}
+
+.fade {
+  animation: fade 1s ease-in-out forwards;
+}
+
+.section-first {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* scroll-snap-align: start; */
+
+  .opening-text {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    h1 {
+      font-size: 3.8rem;
+    }
+
+    .qt-open,
+    .qt-close {
+      position: absolute;
+      font-size: 7rem;
+      opacity: 0.2;
+    }
+
+    .qt-open {
+      top: -80px;
+      left: -50px;
+    }
+
+    .qt-close {
+      bottom: -110px;
+      right: -50px;
+    }
+  }
+
+  .quotes {
+    transition: 0.8.s;
+    position: relative;
+
+    &::before,
+    &::after {
+      position: absolute;
+    }
+
+    &::before {
+      content: "“";
+      top: -10px;
+      left: -10px;
+    }
+    &::after {
+      content: "”";
+      bottom: -10px;
+      right: -10px;
+    }
+
+    &.first {
+      display: flex;
+      flex-direction: column;
+
+      .three {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  .letter {
+    margin-left: 2.3rem;
+    margin-right: 2rem;
+    position: relative;
+
+    &::before,
+    &::after {
+      font-size: 4rem;
+      position: absolute;
+      opacity: 0.2;
+    }
+
+    &::before {
+      content: "“";
+      top: -30px;
+      left: -25px;
+    }
+    &::after {
+      content: "”";
+      bottom: -55px;
+      right: -25px;
+    }
+
+    p {
+      text-align: justify;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
