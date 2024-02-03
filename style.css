@@ -36,12 +36,61 @@ main {
     height: inherit;
     width: inherit;
     /* display: flex; */
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
 .fade {
   animation: fade 1s ease-in-out forwards;
+}
+
+.navigator {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+
+  div {
+    width: 50%;
+  }
+
+  .nav-indicator {
+    height: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+
+    .indicator {
+      height: 100%;
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+
+      div {
+        height: 4px;
+        background: var(--color-black);
+        opacity: 0.3;
+        border-radius: 25px;
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 .section-first {
@@ -110,9 +159,13 @@ main {
   }
 
   .letter {
+    max-height: 0;
+    min-width: fit-content;
+    animation: animateLetterTitle 1.5s ease-in-out forwards;
     margin-left: 2.3rem;
-    margin-right: 2rem;
+    margin-right: 3.3rem;
     position: relative;
+    transition: 0.8s;
 
     &::before,
     &::after {
@@ -128,12 +181,13 @@ main {
     }
     &::after {
       content: "”";
-      bottom: -55px;
+      bottom: -90px;
       right: -25px;
     }
 
     p {
       text-align: justify;
+      padding-top: 0.5rem;
     }
   }
 
@@ -142,11 +196,11 @@ main {
   }
 }
 
-@keyframes fade {
+@keyframes animateLetterTitle {
   from {
-    opacity: 0;
+    width: 0;
   }
   to {
-    opacity: 1;
+    width: 100%;
   }
 }
