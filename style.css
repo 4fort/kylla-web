@@ -4,6 +4,7 @@
 :root {
   --color-white: #fefefe;
   --color-black: #000000;
+  --color-highlight: #ffe6473a;
   /* --color_primary: #f2bed1;
   --color_secondary: #fdcedf;
   --color_tertiary: #f8e8ee;
@@ -23,7 +24,7 @@
 body,
 html {
   height: 95vh;
-  width: 100vw;
+  /* width: 100vw; */
   /* background-color: var(--color_primary); */
   background-color: var(--color-white);
   /* scroll-snap-type: y proximity; */
@@ -58,6 +59,7 @@ main {
   height: 100vh;
   width: 100vw;
   display: flex;
+  z-index: 999999;
 
   div {
     width: 50%;
@@ -78,6 +80,12 @@ main {
       justify-content: space-between;
       align-items: center;
       gap: 0.5rem;
+
+      .subNav {
+        background: rgba(0, 0, 0, 0);
+        display: flex;
+        gap: 0.2rem;
+      }
 
       div {
         height: 4px;
@@ -187,12 +195,56 @@ main {
 
     p {
       text-align: justify;
-      padding-top: 0.5rem;
+      padding-top: 0.8rem;
+    }
+
+    h3 {
+      font-weight: 900;
+    }
+
+    .image {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      gap: 1rem;
+
+      div {
+        width: 40%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px;
+
+        img {
+          width: 100%;
+          aspect-ratio: 1/1;
+        }
+      }
+
+      h3 {
+        width: 60%;
+      }
+    }
+
+    p.lyrics {
+      text-align: center;
+
+      span {
+        background: var(--color-highlight);
+      }
     }
   }
 
   p {
     font-size: 1.1rem;
+  }
+
+  .page-indicator {
+    position: absolute;
+    right: 0;
+    bottom: -100px;
+    font-weight: 900;
+    opacity: 0.3;
   }
 }
 
@@ -202,5 +254,38 @@ main {
   }
   to {
     width: 100%;
+  }
+}
+
+.proposal-intro,
+.proposal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .image {
+    width: 40%;
+    margin-bottom: 5rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    margin-top: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    button {
+      border: 1px solid var(--color-black);
+      background: none;
+      padding: 0.3rem 0.8rem;
+      color: var(--color-black);
+      font-size: 1rem;
+    }
   }
 }

@@ -1,60 +1,60 @@
-// let hoverCounter = 0;
-// let clickCounter = 0;
+let hoverCounter = 0;
+let clickCounter = 0;
 
-// const title = document.querySelector(".title");
-// const counter = document.querySelector(".counter");
-// const yesButton = document.querySelector(".yes");
-// const noButton = document.querySelector(".no");
+const title = document.querySelector(".title");
+const counter = document.querySelector(".counter");
+const yesButton = document.querySelector(".yes");
+const noButton = document.querySelector(".no");
 
-// let x;
-// let y;
+let x;
+let y;
 
-// noButton.addEventListener("click", () => {
-//   hoverCounter++;
-//   // counter.innerHTML = hoverCounter;
+noButton.addEventListener("click", () => {
+  hoverCounter++;
+  // counter.innerHTML = hoverCounter;
 
-//   if (hoverCounter == 5) {
-//     title.innerHTML = "Are you sure you want to do that?";
-//   } else if (hoverCounter == 10) {
-//     title.innerHTML = "Think again Kylla!";
-//   } else if (hoverCounter == 15) {
-//     title.innerHTML = "No, don't do that!";
-//   } else if (hoverCounter == 20) {
-//     title.innerHTML = "Please don't!";
-//   } else if (hoverCounter == 25) {
-//     title.innerHTML = "This is your last chance :(((";
-//   } else if (hoverCounter >= 30) {
-//     if (hoverCounter == 30) {
-//       title.innerHTML = "fine...";
-//     }
+  if (hoverCounter == 5) {
+    title.innerHTML = "Are you sure you want to do that?";
+  } else if (hoverCounter == 10) {
+    title.innerHTML = "Think again Kylla!";
+  } else if (hoverCounter == 15) {
+    title.innerHTML = "No, don't do that!";
+  } else if (hoverCounter == 20) {
+    title.innerHTML = "Please don't!";
+  } else if (hoverCounter == 25) {
+    title.innerHTML = "This is your last chance :(((";
+  } else if (hoverCounter >= 30) {
+    if (hoverCounter == 30) {
+      title.innerHTML = "fine...";
+    }
 
-//     noButton.addEventListener("click", () => {
-//       title.innerHTML = "Really, baby?";
-//       clickCounter++;
-//       if (clickCounter == 1) {
-//         title.innerHTML = "I'm sure you are.";
-//       } else if (clickCounter == 2) {
-//         yesButton.style.transform = "scale(2)";
-//         noButton.style.transform = `${noButton.style.transform} scale(.8)`;
-//       }
-//     });
-//   }
+    noButton.addEventListener("click", () => {
+      title.innerHTML = "Really, baby?";
+      clickCounter++;
+      if (clickCounter == 1) {
+        title.innerHTML = "I'm sure you are.";
+      } else if (clickCounter == 2) {
+        yesButton.style.transform = "scale(2)";
+        noButton.style.transform = `${noButton.style.transform} scale(.8)`;
+      }
+    });
+  }
 
-//   if (hoverCounter <= 30) {
-//     moveButton();
-//   }
-// });
+  if (hoverCounter <= 30) {
+    moveButton();
+  }
+});
 
-// const moveButton = () => {
-//   const w = window.innerWidth - 90;
-//   const h = window.innerHeight - 90;
+const moveButton = () => {
+  const w = window.innerWidth - 90;
+  const h = window.innerHeight - 90;
 
-//   x = Math.random() * (w - noButton.offsetWidth);
-//   y = Math.random() * (h - noButton.offsetHeight);
-//   // noButton.style.left = x + "px";
-//   // noButton.style.top = y + "px";
-//   noButton.style.transform = `translate(${x}px, ${y}px)`;
-// };
+  x = Math.random() * (w - noButton.offsetWidth);
+  y = Math.random() * (h - noButton.offsetHeight);
+  // noButton.style.left = x + "px";
+  // noButton.style.top = y + "px";
+  noButton.style.transform = `translate(${x}px, ${y}px)`;
+};
 
 const heroText = `
 <div class="opening-text fade">
@@ -80,44 +80,133 @@ const mainText = document.querySelector(".text");
 
 let isClickable = false;
 let page = 0;
+let currentLetter = 0;
+let currentProposal = 0;
 
 const qtLineOne = `
   <p class="one">One day,</p>
   <p class="two">I'm gonna have what I prayed for...</p>
-  <p class="three">Now I do.</p>`;
+  <br/>
+  <p class="three">Now I do, her name is Allyssa</p>`;
+
+// const letters = [
+//   `
+// <p>
+//   The third most beautiful woman I know and my everything,
+// </p>
+
+// <p>
+//   I just want to say that I'm so happy to meet and know you.
+//   Ever since we met my life has been very different, and I like this way
+//   better.
+// </p>
+//   `, //^ 0
+//   `
+//   <p>
+//   I'm not really good in writing letters, and thinking of something
+//   to start this took me a long time.
+// </p>
+// <p>
+//   I usually get annoyed when someone talks too much but I never got
+//   annoyed not even once when u do.
+// </p>
+// <p>
+//   You are the person that no one would really hate; There is
+//   literally nothing to hate about you. You deserve pure love and
+//   mwahmwah hahah.
+// </p>
+//   `, //^ 1
+//   `
+//   <p>
+//   Your laugh is a music to my ears. You don't know how much I really
+//   wanted to take a video of you every time you laugh, I just
+//   couldn't take my phone out and ruin the pure genuine moment.
+// </p>
+// <p>Even though we never said it to each other, we knew</p>
+// <p>
+//   I have so many other things to say but I'm gonna save it for next
+//   time.
+// </p>
+//   `, //^ 2
+//   `<p>last letter</P`, //^ 3
+// ];
 
 const letters = [
   `
   <p>
-  I'm not really good in writing letters and thinking of something
-  to start this took me a long time.
-</p>
-<p>
-  I usually get annoyed when someone talks too much but I never got
-  annoyed not even once when u do.
-</p>
-<p>
-  You are the person that no one would really hate; There is
-  literally nothing to hate about you. You deserve pure love and
-  mwahmwah hahah.
-</p>
-<p>
-  I just want to say that I'm so happy to meet and know you.
-  Ever since we met my life has been very different; I like this way
-  better.
-</p>
+    I'm not really good in writing letters, and thinking of something to start this took me a long time.
+  </p>
+  <p>
+    So I hope you understand the imperfections 🥹.
+  </p>
   `,
   `
   <p>
-  Your laugh is a music to my ears. You don't know how much I really
-  wanted to take a video of you every time you laugh, I just
-  couldn't take my phone out and ruin the pure genuine moment.
-</p>
-<p>Even though we never said it to each other, we knew</p>
-<p>
-  I have so many other things to say but I'm gonna save it for next
-  time.
-</p>
+    The third most beautiful woman I know and my everything,
+  </p>
+  <p>
+    When you see this you're probably my girlfriend already 😁. If not then you will be mwehehe.
+  </p>
+  <p>
+    I just want to say that I'm so happy to meet and know you.
+    Ever since we met my life has been very different, and I like this way
+    better.
+  </p>
+  `,
+  `
+  <p>
+    Your laugh is a music to my ears. 
+  </p>
+  <p>
+    You don't know how much I really wanted to take a video of you every time you laugh, I just couldn't take my phone out and ruin the pure genuine moment.
+  </p>
+  `,
+  `
+  <div class="image">
+    <div>
+      <img src="assets/anart.jpg" alt="unique">
+    </div>
+    <h3>
+      An Art Gallery Could Never Be As Unique As You
+    </h3>
+  </div>
+  <p class='lyrics'>
+    So darling, darling, don't be scared<br/>
+    'Cause <span>even if I look everywhere</span><br/>
+    Your <span>colors caught my eye</span><br/>
+    And <span>you're my favorite sight to see</span><br/>
+  </p>
+  `,
+  `
+  <p>
+  If reincarnation is real; I want every lover of my reincarnation be your reincarnation.
+  </p
+  `,
+  `
+  <p>
+    If you had a twin, I would still choose you.
+  </p>
+  `,
+  `
+  <p>
+    You are a person of light.
+  <p>
+  <p>
+    You light up my world in all times. 
+  </p>
+  `,
+  `
+  <p>
+    If you ever think I'm gonna leave you, always remember you are worth everything to me.
+  </p>
+  <p>
+    And I could never afford to lose you
+  </p>
+  `,
+  `
+  <p>
+    I have so many other things to say but I'm gonna save it for a different one. 😉
+  </p>
   `,
 ];
 
@@ -129,18 +218,47 @@ const qtFirst = `
   </div>`;
 
 const loveLetter = `
-<div class="letter fade">
+<div class="letter">
   <h1>Dearest Allyssa,</h1>
   <div class="body"></div>
+  <div class="page-indicator"></div>
 </div>
 `;
 
-const pageComponents = [heroText, qtFirst, loveLetter];
+const proposals = [
+  `
+  <p>
+    Today is the month of love.
+  </p>
+  `,
+  `
+    <h1>Allyssa...</h1>
+  `,
+  `
+    <h5>my pookie wookie cutie patootie sweetiepie with cherry on top</h5>
+  `,
+];
+
+const proposalIntro = `<div class="fade proposal-intro"></div>`;
+
+const pageComponents = [heroText, qtFirst, loveLetter, proposalIntro, ""];
 
 const updateNavIndicator = () => {
   navIndicatorTabs.innerHTML = pageComponents
     .map((_, i) => {
-      if (page == i) return '<div class="active"></div>';
+      if (page == i) {
+        //   if (i === 2)
+        //     return `<div class="subNav">
+        //   ${letters
+        //     .map((_, i) => {
+        //       if (currentLetter === i) return '<div class="active"></div>';
+        //       return '<div class=""></div>';
+        //     })
+        //     .join("")}
+        // </div>`;
+        return '<div class="active"></div>';
+      }
+
       return '<div class=""></div>';
     })
     .join("");
@@ -156,75 +274,138 @@ setTimeout(() => {
   isClickable = true;
 }, 2000);
 
-// wrapper.addEventListener("click", () => {
-//   console.log("clicked");
-//   if (isClickable) {
-//     isClickable = false;
-
-//     if (page == 0) {
-//       sectionFirst.innerHTML = qtFirst;
-//       page++;
-//     } else if (page == 1) {
-//       sectionFirst.innerHTML = loveLetter;
-//     }
-
-//     setTimeout(() => {
-//       if (page == 0)
-//         document.querySelector(".quotes").style = "transform: scale(1.08);";
-//       isClickable = true;
-//     }, 2000);
-//   }
-// });
-
 const updatePage = () => {
-  console.log(page);
+  console.log("page", page);
   updateNavIndicator();
 
-  switch (page) {
-    case 0:
-      sectionFirst.innerHTML = heroText;
-      break;
-    case 1:
-      sectionFirst.innerHTML = qtFirst;
-      break;
-    case 2:
-      sectionFirst.innerHTML = loveLetter;
-      showLetter();
-      break;
+  if (page === 2) {
+    sectionFirst.innerHTML = pageComponents[page];
+    showLetter(2000);
+  } else if (page === 3) {
+    sectionFirst.innerHTML = pageComponents[page];
+    showProposalIntro();
+  } else if (page === 4) {
+    sectionFirst.innerHTML = pageComponents[page];
+    showProposal();
+  } else {
+    sectionFirst.innerHTML = pageComponents[page];
   }
 };
 
 navLeft.addEventListener("click", () => {
+  if (page === 2 && isClickable) {
+    if (currentLetter === 0) navigateLeft();
+    else if (currentLetter <= letters.length) {
+      currentLetter--;
+      showLetter();
+    }
+  }
+  if (page === 3 && isClickable) {
+    console.log("here");
+    if (currentProposal === 0) navigateLeft();
+    else if (currentProposal <= proposals.length) {
+      currentProposal--;
+      console.log("currentProposal", currentProposal);
+      showProposalIntro();
+    }
+  }
+  navigateLeft();
+});
+const navigateLeft = () => {
   if (isClickable) {
     isClickable = false;
-    if (page <= pageComponents.length - 1 && page > 0) page--;
-    updatePage();
+    if (page > 0) {
+      page--;
+      updatePage();
+    }
     setTimeout(() => {
       isClickable = true;
-    }, 2000);
+    }, 300);
   }
-});
+};
 
 navRight.addEventListener("click", () => {
+  if (page === 2 && isClickable) {
+    if (currentLetter === letters.length - 1) navigateRight();
+    else if (currentLetter < letters.length) {
+      currentLetter++;
+      showLetter();
+    }
+  }
+  if (page === 3 && isClickable) {
+    if (currentProposal < proposals.length - 1) {
+      currentProposal++;
+      console.log("currentProposal", currentProposal);
+      showProposalIntro();
+    }
+  }
+  navigateRight();
+});
+const navigateRight = () => {
   if (isClickable) {
     isClickable = false;
-    if (page < pageComponents.length - 1) page++;
-    updatePage();
+    if (page < pageComponents.length - 1) {
+      page++;
+      updatePage();
+    }
     setTimeout(() => {
       isClickable = true;
-    }, 2000);
+    }, 300);
+  }
+};
+
+window.addEventListener("keydown", (e) => {
+  if (e.key == 37 || e.key == "ArrowLeft") {
+    navigateLeft();
+  } else if (e.key == 39 || e.key == "ArrowRight") {
+    navigateRight();
   }
 });
 
-const showLetter = () => {
+const showLetter = (delay = 0) => {
   const letter = document.querySelector(".letter");
   const letterBody = document.querySelector(".letter .body");
+  const letterPageIndicator = document.querySelector(".letter .page-indicator");
+
+  isClickable = false;
 
   setTimeout(() => {
-    letterBody.innerHTML = letters[0];
+    letterBody.innerHTML = letters[currentLetter];
     letterBody.style = "animation: fade 1.5s;";
     letter.style = `
-      max-height: ${letterBody.offsetHeight}px; 
-      `;
-  }, 2000);
+    max-height: ${letterBody.offsetHeight}px; 
+    `;
+    letterPageIndicator.innerHTML = `Page ${currentLetter + 1} of ${
+      letters.length
+    }`;
+    isClickable = true;
+  }, delay);
+};
+
+const showProposalIntro = (delay = 0) => {
+  const proposalOne = document.querySelector(".proposal-intro");
+  const text = "Allyssa...";
+
+  isClickable = false;
+
+  setTimeout(() => {
+    proposalOne.innerHTML = proposals[currentProposal];
+    proposalOne.style = "animation: fade 1.5s;";
+    isClickable = true;
+  }, delay);
+  // if (currentProposal === 1) {
+  //   isClickable = false;
+  //   setTimeout(() => {
+  //     for (let i = 0; i < text.length; i++) {
+  //       setTimeout(() => {
+  //         proposalOne.innerText += text[i];
+  //       }, 100 * i);
+  //     }
+  //     isClickable = true;
+  //   }, 500);
+  // }
+};
+
+const showProposal = () => {
+  window.location.href = "proposal.html";
 };
