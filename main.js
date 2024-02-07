@@ -1,61 +1,3 @@
-let hoverCounter = 0;
-let clickCounter = 0;
-
-const title = document.querySelector(".title");
-const counter = document.querySelector(".counter");
-const yesButton = document.querySelector(".yes");
-const noButton = document.querySelector(".no");
-
-let x;
-let y;
-
-noButton.addEventListener("click", () => {
-  hoverCounter++;
-  // counter.innerHTML = hoverCounter;
-
-  if (hoverCounter == 5) {
-    title.innerHTML = "Are you sure you want to do that?";
-  } else if (hoverCounter == 10) {
-    title.innerHTML = "Think again Kylla!";
-  } else if (hoverCounter == 15) {
-    title.innerHTML = "No, don't do that!";
-  } else if (hoverCounter == 20) {
-    title.innerHTML = "Please don't!";
-  } else if (hoverCounter == 25) {
-    title.innerHTML = "This is your last chance :(((";
-  } else if (hoverCounter >= 30) {
-    if (hoverCounter == 30) {
-      title.innerHTML = "fine...";
-    }
-
-    noButton.addEventListener("click", () => {
-      title.innerHTML = "Really, baby?";
-      clickCounter++;
-      if (clickCounter == 1) {
-        title.innerHTML = "I'm sure you are.";
-      } else if (clickCounter == 2) {
-        yesButton.style.transform = "scale(2)";
-        noButton.style.transform = `${noButton.style.transform} scale(.8)`;
-      }
-    });
-  }
-
-  if (hoverCounter <= 30) {
-    moveButton();
-  }
-});
-
-const moveButton = () => {
-  const w = window.innerWidth - 90;
-  const h = window.innerHeight - 90;
-
-  x = Math.random() * (w - noButton.offsetWidth);
-  y = Math.random() * (h - noButton.offsetHeight);
-  // noButton.style.left = x + "px";
-  // noButton.style.top = y + "px";
-  noButton.style.transform = `translate(${x}px, ${y}px)`;
-};
-
 const heroText = `
 <div class="opening-text fade">
             <div class="qt-open">“</div>
@@ -196,12 +138,14 @@ const letters = [
   </p>
   `,
   `
-  <p>
-    If you ever think I'm gonna leave you, always remember you are worth everything to me.
-  </p>
-  <p>
-    And I could never afford to lose you
-  </p>
+  <div class="post-it">
+    <p class="note">
+      If you ever think I'm gonna leave you, always remember you are worth everything to me.
+    </p>
+    <p class="post-it">
+      And I could never afford to lose you
+    </p>
+  </div>
   `,
   `
   <p>
@@ -241,7 +185,27 @@ const proposals = [
 
 const proposalIntro = `<div class="fade proposal-intro"></div>`;
 
-const pageComponents = [heroText, qtFirst, loveLetter, proposalIntro, ""];
+const pageComponents = [
+  heroText,
+  qtFirst,
+  loveLetter,
+  `
+  <div class="pahabol">
+    <img src="assets/kiss.gif" alt="cutieallyssa">
+    <p> 
+    I continued this today (Feb. 7, 2024)
+    </p>
+    <p>
+      As I'm writing this today I know you're probably upset or something kay wako ka reply nimo ganiha.
+
+    </p>
+    <p>Baby im sorryyyy i really need to finish this so I can show you this tomorrow. Kay I want to see your reaction of this in person huhu</p>
+    <p>Anyways, see you tomorrow baby!!!!!! I CANT WAIT!!!!!</p>
+  </div>
+`,
+  proposalIntro,
+  "",
+];
 
 const updateNavIndicator = () => {
   navIndicatorTabs.innerHTML = pageComponents
@@ -281,10 +245,10 @@ const updatePage = () => {
   if (page === 2) {
     sectionFirst.innerHTML = pageComponents[page];
     showLetter(2000);
-  } else if (page === 3) {
+  } else if (page === 4) {
     sectionFirst.innerHTML = pageComponents[page];
     showProposalIntro();
-  } else if (page === 4) {
+  } else if (page === pageComponents.length - 1) {
     sectionFirst.innerHTML = pageComponents[page];
     showProposal();
   } else {
@@ -300,7 +264,7 @@ navLeft.addEventListener("click", () => {
       showLetter();
     }
   }
-  if (page === 3 && isClickable) {
+  if (page === 4 && isClickable) {
     console.log("here");
     if (currentProposal === 0) navigateLeft();
     else if (currentProposal <= proposals.length) {
@@ -332,7 +296,7 @@ navRight.addEventListener("click", () => {
       showLetter();
     }
   }
-  if (page === 3 && isClickable) {
+  if (page === 4 && isClickable) {
     if (currentProposal < proposals.length - 1) {
       currentProposal++;
       console.log("currentProposal", currentProposal);

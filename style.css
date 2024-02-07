@@ -286,6 +286,66 @@ main {
       padding: 0.3rem 0.8rem;
       color: var(--color-black);
       font-size: 1rem;
+      background: var(--color-white);
     }
+  }
+}
+
+.proposal {
+  height: 100%;
+  justify-content: center;
+}
+
+.post-it {
+  display: table;
+  /* margin: 5em auto 0; */
+  /* transform: scale(0.8); */
+}
+.note {
+  -webkit-box-shadow: #ddd 0px 1px 2px;
+  position: relative;
+  background-color: #f4f39e;
+  border-color: #dee184;
+  text-align: center;
+  margin: 1.5em auto;
+  padding: 1.5em 1em;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+  width: 250px;
+  font-family: "The Girl Next Door", cursive; /*originally with brain flower font*/
+  font-size: 1em;
+}
+.note:after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 30px;
+  top: -21px;
+  left: 30%;
+  border: 1px solid #fff;
+  background: rgba(254, 254, 254, 0.6);
+  -webkit-box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.pahabol {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+
+  p {
+    --padding: 1rem;
+    margin-top: 1rem;
+    padding-left: var(--padding);
+    padding-right: var(--padding);
   }
 }
