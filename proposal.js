@@ -14,6 +14,12 @@ yesButton.addEventListener("click", () => {
   image.innerHTML = `<img src="assets/catyes.jpeg" alt="cutieallyssa" />`;
   yesButton.style = "display: none";
   noButton.style = "display: none";
+  setTimeout(() => {
+    document.write(`
+      <img src="assets/catprop.jpg" alt="cutieallyssa" height="300px" />
+      <h1>Naa koy e ingon</h1>
+    `);
+  }, 2000);
 });
 
 noButton.addEventListener("click", () => {

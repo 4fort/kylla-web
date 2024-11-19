@@ -97,7 +97,7 @@ const letters = [
   `,
   `
   <p>
-    Your laugh is a music to my ears. 
+    <em>Your laugh is a music to my ears. </em>
   </p>
   <p>
     You don't know how much I really wanted to take a video of you every time you laugh, I just couldn't take my phone out and ruin the pure genuine moment.
